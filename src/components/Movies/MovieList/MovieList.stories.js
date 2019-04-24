@@ -27,6 +27,7 @@ storiesOf('MovieList', module)
   .addDecorator(StoryRouter({
     '/movie/:id': action('Redirect to movie details')
   }))
-  .addDecorator(storyFn => <div style={{ padding: '20px', width: '25%' }}>{storyFn()}</div>)
+  .addDecorator(storyFn => <div style={{ padding: '20px', width: '50%' }}>{storyFn()}</div>)
   .add('loading', () => <MovieList loading movies={[]}/>)
+  .add('error', () => <MovieList error='Error loading movies.'/>)
   .add('default', () => <MovieList movies={mockMovies}/>);

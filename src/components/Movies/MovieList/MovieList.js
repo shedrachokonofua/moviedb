@@ -9,13 +9,14 @@ const Wrapper = styled.div`
   grid-template-columns: 1fr 1fr;
 `;
 
-const MovieList = ({ loading, movies }) => {
+const MovieList = ({ error, loading, movies }) => {
+  if(error) return <p>{ error }</p>;
   if(loading) return <p>Loading...</p>;
 
   return (
     <Wrapper>
       { movies.map(movie => (
-        <Link to={`/movie/${movie.id}`}>
+        <Link to={`/movie/${movie.id}`} key={movie.id}>
           <MoviePoster src={movie.posterUrl} title={movie.title}/>
         </Link>      
       )) }
@@ -24,12 +25,12 @@ const MovieList = ({ loading, movies }) => {
 }
 
 MovieList.propTypes = {
-  loading: PropTypes.bool,
-  movies: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
     posterUrl: PropTypes.string.isRequired, 
     title: PropTypes.string.isRequired
-  })
+  }))
 };
 
 MovieList.defaultProps = {
