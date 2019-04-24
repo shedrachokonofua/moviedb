@@ -8,7 +8,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 const Wrapper = styled.div`
   overflow: hidden;
   background-color: #212121;
-  padding: 20px 10px;
+  padding: 20px 20px;
   font-size: 24px;
 `;
 
@@ -29,7 +29,7 @@ const BackButton = (
       <FontAwesomeIcon icon={faArrowLeft} color='#fff'/>
     </Link>
   </BackButtonWrapper>
-)
+);
 
 const Header = ({ title, withBack }) => {
   return (
@@ -38,11 +38,15 @@ const Header = ({ title, withBack }) => {
       <Title>{title}</Title>
     </Wrapper>
   );
-}
+};
 
-Header.PropTypes = {
+Header.propTypes = {
   title: PropTypes.string.isRequired,
   withBack: PropTypes.bool.isRequired
-}
+};
+
+Header.defaultProps = {
+  withBack: false
+};
 
 export default Header;
