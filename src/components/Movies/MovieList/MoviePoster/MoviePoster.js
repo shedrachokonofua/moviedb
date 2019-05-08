@@ -8,7 +8,7 @@ const Image = styled.img`
 `;
 
 const MoviePoster = ({ src, title }) => {
-  return <Image src={src} alt={title} />;
+  return <Image src={src} alt={title} data-cy='MoviePoster'/>;
 }
 
 MoviePoster.propTypes = {
